@@ -14,11 +14,21 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'scrooloose/syntastic'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
+
+NeoBundleCheck
 
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
-NeoBundleCheck
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
