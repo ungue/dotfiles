@@ -30,8 +30,8 @@ set backupdir=$HOME/.vimbackup,$HOME/tmp,.,/tmp
 set directory=$HOME/.vimbackup,$HOME/tmp,.,/tmp
 
 let g:solarized_termcolors=256
-set background=dark
 colorscheme solarized
+set background=dark
 
 set expandtab
 set tabstop=2
@@ -40,3 +40,10 @@ set softtabstop=2
 
 " NERDTree
 nnoremap <leader>r :NERDTreeFind<cr>
+
+" Indent Guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_guide_size = 1
+
+
