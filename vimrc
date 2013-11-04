@@ -24,6 +24,11 @@ filetype indent plugin on
 
 NeoBundleCheck
 
+let mapleader=","
+
+set backupdir=$HOME/.vimbackup,$HOME/tmp,.,/tmp
+set directory=$HOME/.vimbackup,$HOME/tmp,.,/tmp
+
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
@@ -32,3 +37,6 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+
+" NERDTree
+nnoremap <leader>r :NERDTreeFind<cr>
