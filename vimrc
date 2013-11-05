@@ -25,7 +25,9 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'mustache/vim-mode'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-surround'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
@@ -50,9 +52,12 @@ set softtabstop=2
 nnoremap <leader>r :NERDTreeFind<cr>
 
 " Indent Guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-let g:indent_guides_guide_size = 1
+"let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+"let g:indent_guides_guide_size = 1
 
 " Unite
 nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files<CR>
+
+" Mustache | Handlebars
+let g:mustache_abbreviations = 1
