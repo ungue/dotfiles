@@ -28,6 +28,7 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'mustache/vim-mode'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
@@ -47,6 +48,7 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set number
 
 " NERDTree
 nnoremap <leader>r :NERDTreeFind<cr>
@@ -57,7 +59,12 @@ nnoremap <leader>r :NERDTreeFind<cr>
 "let g:indent_guides_guide_size = 1
 
 " Unite
-nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files<CR>
+nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files -auto-preview<CR>
+nnoremap <leader>/ :Unite grep:. -auto-preview<cr>
 
 " Mustache | Handlebars
 let g:mustache_abbreviations = 1
+
+" XML
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null 
+
