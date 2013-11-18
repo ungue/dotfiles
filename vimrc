@@ -34,6 +34,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'thinca/vim-visualstar'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
