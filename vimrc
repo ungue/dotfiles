@@ -33,8 +33,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'godlygeek/csapprox'
-NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
@@ -57,14 +57,23 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set number
+set incsearch
+set ignorecase smartcase
 
 " F7 and F8 for tab movement
 nnoremap <F7> :tabp<CR>
 nnoremap <F8> :tabn<CR>
 
+" Powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim
+
 " NERDTree
 nnoremap <leader>r :NERDTreeFind<cr>
 nnoremap <F2> :NERDTreeToggle<cr>
+
+" Easymotion
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
 
 " Indent Guides
 "let g:indent_guides_enable_on_vim_startup = 1
