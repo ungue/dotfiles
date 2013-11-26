@@ -25,7 +25,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'mustache/vim-mode'
 NeoBundle 'scrooloose/syntastic'
@@ -35,6 +34,7 @@ NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'tmhedberg/matchit'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
@@ -74,11 +74,6 @@ nnoremap <F2> :NERDTreeToggle<cr>
 " Easymotion
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
-
-" Indent Guides
-"let g:indent_guides_enable_on_vim_startup = 1
-"let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-"let g:indent_guides_guide_size = 1
 
 " Unite
 nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files<CR>
