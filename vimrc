@@ -58,7 +58,12 @@ set shiftwidth=2
 set softtabstop=2
 set number
 set incsearch
+set hlsearch
 set ignorecase smartcase
+set clipboard=unnamed
+
+" Disable search highlight when CR
+nnoremap <CR> :noh<CR><CR>
 
 " F7 and F8 for tab movement
 nnoremap <F7> :tabp<CR>
