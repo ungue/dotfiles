@@ -70,6 +70,12 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap <F7> :tabp<CR>
 nnoremap <F8> :tabn<CR>
 
+" Map Ctrl-hjkl for easier pane navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " Powerline
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
