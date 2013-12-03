@@ -37,6 +37,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'msanders/snipmate.vim'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 filetype indent plugin on
@@ -96,4 +97,7 @@ nnoremap <leader>/ :Unite grep:.<cr>
 let g:mustache_abbreviations = 1
 
 " XML
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null 
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+" Trailing whitespaces
+autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
