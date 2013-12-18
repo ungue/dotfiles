@@ -102,3 +102,6 @@ autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/n
 
 " Trailing whitespaces
 autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Autoload vimrc
+autocmd BufWritePost .vimrc source %
