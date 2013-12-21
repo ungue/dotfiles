@@ -30,6 +30,7 @@ NeoBundle 'mustache/vim-mode'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'thinca/vim-visualstar'
@@ -101,3 +102,6 @@ autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/n
 
 " Trailing whitespaces
 autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Autoload vimrc
+autocmd BufWritePost .vimrc source %
