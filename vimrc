@@ -79,7 +79,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Powerline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=$HOME/.config/powerline/vim
 
 " NERDTree
 nnoremap <leader>r :NERDTreeFind<cr>
