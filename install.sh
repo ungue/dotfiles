@@ -15,9 +15,12 @@ done
 
 [ "$(gem list tmuxinator -i)" == "true" ] || gem install tmuxinator
 
+rbenv rehash
+
+tmuxinator doctor
+
 for yml_file in "$DROPBOX_DEV/tmuxinator/*.yml"; do
   yml_base_file=$(basename $yml_file)
   [ -f $HOME/.tmuxinator/$yml_base_file ] || ln -s $yml_file $HOME/.tmuxinator/$yml_base_file
 done
 
-rbenv rehash
