@@ -105,3 +105,7 @@ autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Autoload vimrc
 autocmd BufWritePost .vimrc source %
+
+" Tabular
+map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
+map <leader>t= :Tabularize /=<CR>
