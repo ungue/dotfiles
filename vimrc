@@ -41,6 +41,7 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'benmills/vimux'
 
 filetype indent plugin on
 
