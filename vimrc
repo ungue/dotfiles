@@ -89,7 +89,7 @@ nnoremap <leader>r :NERDTreeFind<cr>
 nnoremap <F2> :NERDTreeToggle<cr>
 
 " Neocomplcache
-" let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 1
 
 " Neosnippet
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -108,6 +108,10 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" Enable snipMate compatibility feature.
+" let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets'
 
 " Easymotion
 hi link EasyMotionTarget ErrorMsg
@@ -128,6 +132,10 @@ autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Autoload vimrc
 autocmd BufWritePost .vimrc source %
+
+" Folding
+autocmd Syntax javascript,ruby setlocal foldmethod=syntax
+autocmd Syntax javascript,ruby normal zR
 
 " Tabular
 map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
