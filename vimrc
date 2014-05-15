@@ -42,6 +42,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'benmills/vimux'
+NeoBundle 'rking/ag.vim'
 
 filetype indent plugin on
 
@@ -121,6 +122,15 @@ hi link EasyMotionShade  Comment
 nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files<CR>
 nnoremap <leader>/ :Unite grep:.<cr>
 
+" Use ag for search
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores'
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --skip-vcs-ignores'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 " Mustache | Handlebars
 let g:mustache_abbreviations = 1
 
@@ -140,3 +150,9 @@ autocmd Syntax javascript,ruby normal zR
 " Tabular
 map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
 map <leader>t= :Tabularize /=<CR>
+
+" Vimux
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vz :call VimuxZoomRunner()<CR>
