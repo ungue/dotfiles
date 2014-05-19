@@ -22,6 +22,7 @@ NeoBundle 'Shougo/vimproc', {
   \    },
   \ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'scrooloose/nerdtree'
@@ -43,6 +44,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'benmills/vimux'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'craigemery/vim-autotag'
 
 filetype indent plugin on
 
@@ -68,6 +70,9 @@ set incsearch
 set hlsearch
 set ignorecase smartcase
 set clipboard=unnamed
+
+" Tags
+set tags+=.tags
 
 " Disable search highlight when CR
 nnoremap <CR> :noh<CR><CR>
@@ -123,9 +128,9 @@ nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=
 nnoremap <leader>/ :Unite grep:.<cr>
 
 " Use ag for search
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores'
-
 if executable('ag')
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores -g ""'
+  let g:unite_source_file_rec_max_cache_files = 5000
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --skip-vcs-ignores'
   let g:unite_source_grep_recursive_opt = ''
