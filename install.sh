@@ -3,9 +3,10 @@
 BUNDLE_DIR="$HOME/.vim/bundle"
 TMUX_SCRIPTS_DIR="$HOME/.tmux"
 DROPBOX_DEV="$HOME/Dropbox/Development"
-DOT_FILES="vimrc tmux.conf"
+DOT_FILES="vimrc tmux.conf tmux-osx.conf tmux-linux.conf"
 
-BASE_DIR=$(dirname $0)
+BASE_DIR=$(cd "$(dirname $0)"; pwd -P)
+echo $BASE_DIR
 
 [ -d "$BUNDLE_DIR" ] || mkdir -p $BUNDLE_DIR
 [ -d "$BUNDLE_DIR/neobundle.vim" ] || git clone git://github.com/Shougo/neobundle.vim $BUNDLE_DIR/neobundle.vim
@@ -23,6 +24,7 @@ done
 
 if [ "$(uname)" == "Darwin" ]; then
   brew install the_silver_searcher
+  brew install reattach-to-user-namespace
 else
   sudo apt-get install silversearcher-ag 
 fi
