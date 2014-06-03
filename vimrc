@@ -127,10 +127,12 @@ hi link EasyMotionShade  Comment
 nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files<CR>
 nnoremap <leader>/ :Unite grep:.<cr>
 
+let g:unite_source_file_rec_max_cache_files = 0
+
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
+
 " Use ag for search
 if executable('ag')
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores -g ""'
-  let g:unite_source_file_rec_max_cache_files = 5000
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --skip-vcs-ignores'
   let g:unite_source_grep_recursive_opt = ''
