@@ -34,6 +34,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'thinca/vim-visualstar'
@@ -45,6 +46,8 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascr
 NeoBundle 'benmills/vimux'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'craigemery/vim-autotag'
+NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+NeoBundle 'stephpy/vim-yaml'
 
 filetype indent plugin on
 
@@ -55,11 +58,11 @@ let mapleader=","
 set backupdir=$HOME/.vimbackup,$HOME/tmp,.,/tmp
 set directory=$HOME/.vimbackup,$HOME/tmp,.,/tmp
 
-"let g:solarized_termcolors=256
+set background=dark
+" set background=light
+" let g:solarized_termcolors=256
 colorscheme distinguished
-"colorscheme solarized
-"set background=dark
-set background=light
+" colorscheme solarized
 
 set expandtab
 set tabstop=2
@@ -70,6 +73,7 @@ set incsearch
 set hlsearch
 set ignorecase smartcase
 set clipboard=unnamed
+set nobackup
 
 " Tags
 set tags+=.tags
@@ -163,3 +167,7 @@ map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vz :call VimuxZoomRunner()<CR>
+
+" Gist
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_post_private = 1
