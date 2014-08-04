@@ -3,7 +3,8 @@
 BUNDLE_DIR="$HOME/.vim/bundle"
 TMUX_SCRIPTS_DIR="$HOME/.tmux"
 DROPBOX_DEV="$HOME/Dropbox/Development"
-DOT_FILES="vimrc tmux.conf tmux-osx.conf tmux-linux.conf"
+DOT_FILES="vimrc tmux.conf tmux-osx.conf tmux-linux.conf zshrc zshrc-aliases"
+SO=[ "$(uname)" == "Darwin" ] && 'osx' || 'linux'
 
 BASE_DIR=$(cd "$(dirname $0)"; pwd -P)
 echo $BASE_DIR
@@ -22,7 +23,9 @@ for tmux_script_file in $(ls $DROPBOX_DEV/tmux/*.sh); do
   [ -f $TMUX_SCRIPTS_DIR/$tmux_script_base_file ] || ln -s $tmux_script_file $TMUX_SCRIPTS_DIR/$tmux_script_base_file 
 done
 
-if [ "$(uname)" == "Darwin" ]; then
+[ -f $HOME/.zshrc-private ] || ln -s $DROPBOX_DEV/zsh/zshrc-private-$SO $HOME/.zshrc-private
+
+if [ $SO == "linux" ]; then
   brew install the_silver_searcher
   brew install reattach-to-user-namespace
 else
