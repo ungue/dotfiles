@@ -48,6 +48,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'stephpy/vim-yaml'
+NeoBundle 'lunaru/vim-less'
 
 filetype indent plugin on
 
