@@ -45,9 +45,6 @@ source $ZSH/oh-my-zsh.sh
 
 autoload zmv
 
-# Customize to your needs...
-export PATH=$HOME/.rbenv/bin:$PATH:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-
 export EDITOR=vim
 
 # Ctrl+R history search
