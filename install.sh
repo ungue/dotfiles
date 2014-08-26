@@ -17,6 +17,9 @@ echo $BASE_DIR
 [ -d "$HOME/.ssh" ]        || mkdir -p $HOME/.ssh
 [ -d "$HOME/.ssh/keys" ]   || ln -s $DROPBOX_DEV/ssh/keys $HOME/.ssh/keys
 [ -f "$HOME/.ssh/config" ] || ln -s $DROPBOX_DEV/ssh/config $HOME/.ssh/config
+# Restrict key permissions
+find $HOME/.ssh/keys/ -type f -not -name "*.pub" -exec chmod 600 {} \;
+
 
 # Vim bundles
 [ -d "$BUNDLE_DIR" ] || mkdir -p $BUNDLE_DIR
