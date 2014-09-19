@@ -45,6 +45,8 @@ source $ZSH/oh-my-zsh.sh
 
 autoload zmv
 
+export PATH=$HOME/.tmux:$PATH
+
 export EDITOR=vim
 
 # Ctrl+R history search
