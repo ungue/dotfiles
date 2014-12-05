@@ -22,12 +22,15 @@ NeoBundle 'Shougo/vimproc', {
   \    },
   \ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'mustache/vim-mode'
 NeoBundle 'scrooloose/syntastic'
@@ -120,27 +123,48 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+let g:rails_no_abbreviations = 1
+
 " Enable snipMate compatibility feature.
 " let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets'
+
+" enable ruby & rails snippet only rails file
+function! s:RailsSnippet()
+  if exists("b:rails_root") && (&filetype == "ruby")
+    NeoSnippetSource ~/.vim/bundle/neosnippet-snippets/neosnippets/rails.snip
+  endif
+endfunction
+
+autocmd BufEnter * call s:RailsSnippet()
 
 " Easymotion
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 " Unite
-nnoremap <C-P> :<C-u>Unite file_mru file_rec/async:! -start-insert -buffer-name=files<CR>
-nnoremap <leader>/ :Unite grep:.<cr>
+nnoremap <C-P> :<C-u>Unite file_rec/async:! -start-insert -buffer-name=files<CR>
+nnoremap <space>/ :<C-u>Unite grep:.<cr>
+nnoremap <space>t :<C-u>Unite -no-empty -quick-match -immediately tab:no-current<cr>
+nnoremap <space>y :<C-u>Unite history/yank<cr>
+nnoremap <space>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 
 let g:unite_source_file_rec_max_cache_files = 0
+let g:unite_source_history_yank_enable = 1
 
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_selecta'])
+call unite#custom#source('file_rec,file_rec/async,file_mru,buffer', 'max_candidates', 0)
 
 " Use ag for search
 if executable('ag')
+  " Grep command
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --skip-vcs-ignores'
   let g:unite_source_grep_recursive_opt = ''
+
+  " Recursive command
+  let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden --skip-vcs-ignores -g ""'
 endif
 
 " Mustache | Handlebars
@@ -156,8 +180,8 @@ autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd BufWritePost .vimrc source %
 
 " Folding
-autocmd Syntax javascript,ruby setlocal foldmethod=syntax
-autocmd Syntax javascript,ruby normal zR
+autocmd Syntax javascript setlocal foldmethod=syntax
+autocmd Syntax javascript normal zR
 
 " Tabular
 map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
