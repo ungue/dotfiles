@@ -1,2 +1,11 @@
 alias tmux="tmux -2"
-alias cddev="cd ~/$DEVELOPMENT"
+alias cddev="cd $DEVELOPMENT"
+
+local open_cmd
+if [[ "$OSTYPE" = darwin* ]]; then
+  open_cmd='open'
+else
+  open_cmd='xdg-open'
+fi
+
+alias open=$open_cmd

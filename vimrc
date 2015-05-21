@@ -6,7 +6,7 @@ set encoding=utf-8
 set t_Co=256
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -46,12 +46,14 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'benmills/vimux'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'lunaru/vim-less'
+NeoBundle 'mattn/emmet-vim'
+
+call neobundle#end()
 
 filetype indent plugin on
 
@@ -143,7 +145,7 @@ hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 " Unite
-nnoremap <C-P> :<C-u>Unite file_rec/async:! -start-insert -buffer-name=files<CR>
+nnoremap <C-P> :<C-u>Unite file_rec/async:! -sync -start-insert -buffer-name=files<CR>
 nnoremap <space>/ :<C-u>Unite grep:.<cr>
 nnoremap <space>t :<C-u>Unite -no-empty -quick-match -immediately tab:no-current<cr>
 nnoremap <space>y :<C-u>Unite history/yank<cr>
@@ -186,12 +188,6 @@ autocmd Syntax javascript normal zR
 " Tabular
 map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
 map <leader>t= :Tabularize /=<CR>
-
-" Vimux
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vq :VimuxCloseRunner<CR>
-map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Gist
 let g:gist_clip_command = 'xclip -selection clipboard'

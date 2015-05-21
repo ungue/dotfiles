@@ -7,6 +7,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
+PATH=$HOME/.rbenv/bin:$HOME/.ndenv/bin:$PATH
+
 [[ -s "$HOME/.zshrc-private" ]] && source $HOME/.zshrc-private
 [[ -s "$HOME/.zshrc-aliases" ]] && source $HOME/.zshrc-aliases
 
@@ -39,7 +41,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git ruby vi-mode gem autojump bundler frontend-search web-search)
+plugins=(aws extract rails git ruby vi-mode gem autojump bundler frontend-search web-search tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -51,12 +53,10 @@ export EDITOR=vim
 
 # Ctrl+R history search
 bindkey '^R' history-incremental-search-backward
+# Ctrl+F forward history search
+bindkey '^F' history-incremental-search-forward
 
 eval "$(rbenv init -)"
+eval "$(ndenv init -)"
 
 setopt extended_glob
-
-# Ruby memory management
-export RUBY_GC_MALLOC_LIMIT=1000000000
-export RUBY_FREE_MIN=500000
-export RUBY_HEAP_MIN_SLOTS=40000
