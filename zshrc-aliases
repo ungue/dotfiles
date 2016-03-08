@@ -1,6 +1,11 @@
 alias tmux="tmux -2"
 alias cddev="cd $DEVELOPMENT"
 
+alias dc='docker-compose'
+alias dcr='docker-compose run --rm'
+alias dcrs='docker-compose run --rm --service-ports'
+alias dcre='docker-compose run --rm --entrypoint'
+
 local open_cmd
 if [[ "$OSTYPE" = darwin* ]]; then
   open_cmd='open'
@@ -9,3 +14,4 @@ else
 fi
 
 alias open=$open_cmd
+

@@ -41,7 +41,7 @@ PATH=$HOME/.rbenv/bin:$HOME/.ndenv/bin:$PATH
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws extract rails git ruby vi-mode gem autojump bundler frontend-search web-search tmux)
+plugins=(aws extract rails git ruby vi-mode gem autojump bundler docker-compose frontend-search web-search tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,5 +58,7 @@ bindkey '^F' history-incremental-search-forward
 
 eval "$(rbenv init -)"
 eval "$(ndenv init -)"
+
+[[ -f "$HOME/.dircolors" ]] && eval "$(dircolors $HOME/.dircolors)"
 
 setopt extended_glob
