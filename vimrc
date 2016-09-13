@@ -61,6 +61,7 @@ NeoBundleCheck
 
 let mapleader=","
 
+set noswapfile
 set backupdir=$HOME/.vimbackup,$HOME/tmp,.,/tmp
 set directory=$HOME/.vimbackup,$HOME/tmp,.,/tmp
 
@@ -78,7 +79,7 @@ set number
 set incsearch
 set hlsearch
 set ignorecase smartcase
-set clipboard=unnamed
+set clipboard=unnamedplus
 set nobackup
 
 " Tags
@@ -98,7 +99,11 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Powerline
-set rtp+=$HOME/.config/powerline/vim
+if exists("$POWERLINE_ROOT")
+  set rtp+=$POWERLINE_ROOT/bindings/vim
+else
+  set rtp+=$HOME/.config/powerline/vim
+endif
 
 " NERDTree
 nnoremap <leader>r :NERDTreeFind<cr>
@@ -162,11 +167,16 @@ call unite#custom#source('file_rec,file_rec/async,file_mru,buffer', 'max_candida
 if executable('ag')
   " Grep command
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --skip-vcs-ignores'
+  let g:unite_source_grep_default_opts = '-i --vimgrep --skip-vcs-ignores'
   let g:unite_source_grep_recursive_opt = ''
 
   " Recursive command
-  let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden --skip-vcs-ignores -g ""'
+  " let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden --skip-vcs-ignores -g ""'
+  " let g:unite_source_rec_async_command =
+  "       \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden',
+  "       \  '--skip-vcs-ignores', '-g', '']
+  let g:unite_source_rec_async_command =
+        \ ['ag', '--vimgrep', '--skip-vcs-ignores', '-g', '']
 endif
 
 " Mustache | Handlebars
@@ -190,5 +200,5 @@ map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
 map <leader>t= :Tabularize /=<CR>
 
 " Gist
-let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_clip_command = 'xsel -bi'
 let g:gist_post_private = 1
