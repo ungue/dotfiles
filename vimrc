@@ -52,6 +52,7 @@ NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'lunaru/vim-less'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mxw/vim-jsx'
 
 call neobundle#end()
 
@@ -192,8 +193,8 @@ autocmd FileType javascript,vim,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd BufWritePost .vimrc source %
 
 " Folding
-autocmd Syntax javascript setlocal foldmethod=syntax
-autocmd Syntax javascript normal zR
+" autocmd Syntax javascript setlocal foldmethod=syntax
+" autocmd Syntax javascript normal zR
 
 " Tabular
 map <leader>t: :Tabularize /:\s\+\zs/l1c0<CR>
@@ -202,3 +203,9 @@ map <leader>t= :Tabularize /=<CR>
 " Gist
 let g:gist_clip_command = 'xsel -bi'
 let g:gist_post_private = 1
+
+" Custom filetypes
+autocmd BufRead,BufNewFile *.es6 set filetype=javascript
+
+" Linters
+let g:syntastic_javascript_checkers = ['eslint']

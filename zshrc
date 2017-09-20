@@ -10,7 +10,6 @@ ZSH_THEME="robbyrussell"
 PATH=$HOME/.rbenv/bin:$HOME/.ndenv/bin:$PATH
 
 [[ -s "$HOME/.zshrc-private" ]] && source $HOME/.zshrc-private
-[[ -s "$HOME/.zshrc-aliases" ]] && source $HOME/.zshrc-aliases
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -50,6 +49,8 @@ autoload zmv
 export PATH=$HOME/.tmux:$PATH
 
 export EDITOR=vim
+
+[[ -s "$HOME/.zshrc-aliases" ]] && source $HOME/.zshrc-aliases
 
 # Ctrl+R history search
 bindkey '^R' history-incremental-search-backward
